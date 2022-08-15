@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Vue组件间通信 | 临风</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/myblog/assets/img/yao.png">
+    <script src="/myblog/js/MouseClickEffect.js"></script>
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/myblog/assets/css/0.styles.f1cc4118.css" as="style"><link rel="preload" href="/myblog/assets/js/app.3eeaeb68.js" as="script"><link rel="preload" href="/myblog/assets/js/3.e371c4cc.js" as="script"><link rel="preload" href="/myblog/assets/js/1.f91b95b6.js" as="script"><link rel="preload" href="/myblog/assets/js/35.6ff9f76d.js" as="script"><link rel="prefetch" href="/myblog/assets/js/10.e91e5c2e.js"><link rel="prefetch" href="/myblog/assets/js/11.d8832ecf.js"><link rel="prefetch" href="/myblog/assets/js/12.2edafff8.js"><link rel="prefetch" href="/myblog/assets/js/13.8b9f1fe0.js"><link rel="prefetch" href="/myblog/assets/js/14.d453255e.js"><link rel="prefetch" href="/myblog/assets/js/15.ba2399cf.js"><link rel="prefetch" href="/myblog/assets/js/16.a9d7541c.js"><link rel="prefetch" href="/myblog/assets/js/17.d67ee5fc.js"><link rel="prefetch" href="/myblog/assets/js/18.ceb67a43.js"><link rel="prefetch" href="/myblog/assets/js/19.561b634b.js"><link rel="prefetch" href="/myblog/assets/js/20.228252cc.js"><link rel="prefetch" href="/myblog/assets/js/21.8af1cf80.js"><link rel="prefetch" href="/myblog/assets/js/22.c969388b.js"><link rel="prefetch" href="/myblog/assets/js/23.b7231fee.js"><link rel="prefetch" href="/myblog/assets/js/24.b4f11116.js"><link rel="prefetch" href="/myblog/assets/js/25.2d4249d0.js"><link rel="prefetch" href="/myblog/assets/js/26.d4c8a995.js"><link rel="prefetch" href="/myblog/assets/js/27.9bd892b9.js"><link rel="prefetch" href="/myblog/assets/js/28.bad7abc8.js"><link rel="prefetch" href="/myblog/assets/js/29.17438dfc.js"><link rel="prefetch" href="/myblog/assets/js/30.c7099db1.js"><link rel="prefetch" href="/myblog/assets/js/31.d271fc04.js"><link rel="prefetch" href="/myblog/assets/js/32.a58f80bb.js"><link rel="prefetch" href="/myblog/assets/js/33.57889c11.js"><link rel="prefetch" href="/myblog/assets/js/34.4c2dc58e.js"><link rel="prefetch" href="/myblog/assets/js/36.5e588eca.js"><link rel="prefetch" href="/myblog/assets/js/37.2d26eac6.js"><link rel="prefetch" href="/myblog/assets/js/38.d5c73a2d.js"><link rel="prefetch" href="/myblog/assets/js/39.edfdbd41.js"><link rel="prefetch" href="/myblog/assets/js/4.28963861.js"><link rel="prefetch" href="/myblog/assets/js/40.a219377b.js"><link rel="prefetch" href="/myblog/assets/js/41.9a1ecd97.js"><link rel="prefetch" href="/myblog/assets/js/42.7b7edf69.js"><link rel="prefetch" href="/myblog/assets/js/43.aab4a5e2.js"><link rel="prefetch" href="/myblog/assets/js/44.c86f5819.js"><link rel="prefetch" href="/myblog/assets/js/5.6fb919a2.js"><link rel="prefetch" href="/myblog/assets/js/6.1c299888.js"><link rel="prefetch" href="/myblog/assets/js/7.d4a0e324.js"><link rel="prefetch" href="/myblog/assets/js/8.9cb303ea.js"><link rel="prefetch" href="/myblog/assets/js/9.ed0b0bcc.js">
+    <link rel="stylesheet" href="/myblog/assets/css/0.styles.f1cc4118.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-130b300a><div data-v-130b300a><div class="password-shadow password-wrapper-out" style="display:none;" data-v-25ba6db2 data-v-130b300a data-v-130b300a><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>临风</h3> <p class="description" data-v-25ba6db2 data-v-25ba6db2></p> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>临风</span>
+            
+          <!---->
+          2022
+        </a></span></div></div> <div class="hide" data-v-130b300a><header class="navbar" data-v-130b300a><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/myblog/" class="home-link router-link-active"><img src="/myblog/assets/img/yao.png" alt="临风" class="logo"> <span class="site-name">临风</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/myblog/" class="nav-link"><i class="iconfont reco-home"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/categories/JavaScript/" class="nav-link"><i class="undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/categories/CSS/" class="nav-link"><i class="undefined"></i>
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/categories/HTML/" class="nav-link"><i class="undefined"></i>
+  HTML
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/categories/后端/" class="nav-link"><i class="undefined"></i>
+  后端
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/categories/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/categories/webpack/" class="nav-link"><i class="undefined"></i>
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/categories/第三方模块/" class="nav-link"><i class="undefined"></i>
+  第三方模块
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/categories/其它/" class="nav-link"><i class="undefined"></i>
+  其它
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/categories/网络/" class="nav-link"><i class="undefined"></i>
+  网络
+</a></li></ul></div></div><div class="nav-item"><a href="/myblog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/myblog/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-other"></i>
+      关于
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/authorinfo.html" class="nav-link"><i class="iconfont reco-suggestion"></i>
+  关于本博客
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/resume.html" class="nav-link"><i class="iconfont reco-account"></i>
+  简历
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-130b300a></div> <aside class="sidebar" data-v-130b300a><div class="personal-info-wrapper" data-v-39576ba9 data-v-130b300a><img src="/myblog/assets/img/touxiang.png" alt="author-avatar" class="personal-img" data-v-39576ba9> <h3 class="name" data-v-39576ba9>
+    临风
+  </h3> <div class="num" data-v-39576ba9><div data-v-39576ba9><h3 data-v-39576ba9>25</h3> <h6 data-v-39576ba9>Articles</h6></div> <div data-v-39576ba9><h3 data-v-39576ba9>20</h3> <h6 data-v-39576ba9>Tags</h6></div></div> <ul class="social-links" data-v-39576ba9></ul> <hr data-v-39576ba9></div> <nav class="nav-links"><div class="nav-item"><a href="/myblog/" class="nav-link"><i class="iconfont reco-home"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/categories/JavaScript/" class="nav-link"><i class="undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/categories/CSS/" class="nav-link"><i class="undefined"></i>
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/categories/HTML/" class="nav-link"><i class="undefined"></i>
+  HTML
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/categories/后端/" class="nav-link"><i class="undefined"></i>
+  后端
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/categories/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/categories/webpack/" class="nav-link"><i class="undefined"></i>
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/categories/第三方模块/" class="nav-link"><i class="undefined"></i>
+  第三方模块
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/categories/其它/" class="nav-link"><i class="undefined"></i>
+  其它
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/categories/网络/" class="nav-link"><i class="undefined"></i>
+  网络
+</a></li></ul></div></div><div class="nav-item"><a href="/myblog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/myblog/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-other"></i>
+      关于
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/authorinfo.html" class="nav-link"><i class="iconfont reco-suggestion"></i>
+  关于本博客
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/resume.html" class="nav-link"><i class="iconfont reco-account"></i>
+  简历
+</a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-25ba6db2 data-v-130b300a><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>Vue组件间通信</h3> <!----> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>临风</span>
+            
+          <!---->
+          2022
+        </a></span></div></div> <div data-v-130b300a><main class="page"><section><div class="page-title"><h1 class="title">Vue组件间通信</h1> <div data-v-f875f3fc><i class="iconfont reco-account" data-v-f875f3fc><span data-v-f875f3fc>临风</span></i> <i class="iconfont reco-date" data-v-f875f3fc><span data-v-f875f3fc>6/23/2022</span></i> <!----> <i class="tags iconfont reco-tag" data-v-f875f3fc><span class="tag-item" data-v-f875f3fc>面试题</span><span class="tag-item" data-v-f875f3fc>Vue</span></i></div></div> <div class="theme-reco-content content__default"><h2 id="父组件传值到子组件"><a href="#父组件传值到子组件" class="header-anchor">#</a> 父组件传值到子组件</h2> <p><strong>props：</strong>
+父组件向子组件中传递数据，可以在子组件中通过设置props属性来接收传递过来的数据。<br>
+一个组件默认可以拥有任意数量的 prop，任何值都可以传递给任何 prop。<br>
+当一个值传递给一个 prop attribute 的时候，它就变成了那个组件实例的一个属性（例如下面的 subNum），通过属性名，我们就能够在组件实例中访问这个值。<br> <em><strong>父组件</strong></em></p> <div class="language-html extra-class"><pre class="language-html"><code>    <span class="token comment">&lt;!-- 将父组件中的num，传递给子组件中的sub-num --&gt;</span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>blog-count</span> <span class="token attr-name">:sub-num</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>num<span class="token punctuation">&quot;</span></span> <span class="token attr-name">:sub-user</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>user<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>blog-count</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p><em><strong>子组件</strong></em></p> <div class="language-js extra-class"><pre class="language-js"><code>	<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 子组件中通过props属性接收父组件传递过来的数据 <span class="token operator">--</span><span class="token operator">&gt;</span>
+       <span class="token literal-property property">props</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token string">&quot;subNum&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;subUser&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+</code></pre></div><h2 id="祖先组件传值到后代组件"><a href="#祖先组件传值到后代组件" class="header-anchor">#</a> 祖先组件传值到后代组件</h2> <p><strong>依赖注入 provide inject</strong><br>
+这对选项是2.2.0版本新增的。需要一起使用，它允许一个祖先组件向其所有子孙后代注入一个依赖，不论组件层次有多深，并在起上下游关系成立的时间里始终生效。<br>
+主要解决了跨级组件间的通信问题。<br>
+在祖先组件中增加属性 provide，它的属性值是一个对象或返回一个对象的函数。该对象包含了给子组件要传递的数据。<br>
+在子组件中增加属性 inject ，用来接收数据，它的选项是一个字符串数组，或一个对象。</p> <h2 id="子组件传值到父组件"><a href="#子组件传值到父组件" class="header-anchor">#</a> 子组件传值到父组件</h2> <ol><li>子组件向父组件传递数据，通过 $emit派发事件，父组件中通过 v-on 接收该事件，拿到传递的数据。
+语法：$emit(eventName，data)，第一个参数为事件名称，需要跟父组件中 v-on 监听的事件名称一致；第二个参数为要传递的数据。
+<em><strong>父组件</strong></em></li></ol> <div class="language-vue extra-class"><pre class="language-vue"><code>	<span class="token comment">&lt;!-- 通过 v-on 监听事件--&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>blog-count</span> <span class="token attr-name">@countchange</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>changeHandle<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>blog-count</span><span class="token punctuation">&gt;</span></span>
+    ***子组件***
+     methods: {
+            clickHandle(){
+            	//使用 $emit派发事件
+                this.$emit(&quot;countchange&quot;,this.num);
+            }
+        }
+</code></pre></div><ol start="2"><li>.sync 修饰符 (已废除)</li></ol> <h2 id="兄弟组件之间的传值"><a href="#兄弟组件之间的传值" class="header-anchor">#</a> 兄弟组件之间的传值</h2> <ol><li>event bus 事件总线
+事件的触发器，vue 1.0版本使用比较多，现在已经不用。
+这种方法可以看作是通过一个空的实例 new Vue()作为事件总线（事件中心），用它来派发和监听事件，可以实现任何组件间的通信，包括父子、兄弟、跨级。缺点：这种传递数据的方式不是响应式。</li> <li>消息订阅与发布</li> <li>vuex</li></ol> <h2 id="event-bus-事件总线"><a href="#event-bus-事件总线" class="header-anchor">#</a> event bus 事件总线</h2> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>app<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>{{num}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>blog-count</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>blog-count</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>clickHandle<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>send<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+	<span class="token comment">//创建一个空的vue实例</span>
+    <span class="token keyword">const</span> eventbus<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">//子组件1</span>
+    <span class="token keyword">const</span> blogCount<span class="token operator">=</span><span class="token punctuation">{</span>
+        <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token literal-property property">num</span><span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">template</span><span class="token operator">:</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;div&gt;{{num}}&lt;/div&gt;</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+        <span class="token function">mounted</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        	<span class="token comment">//监听事件</span>
+            eventbus<span class="token punctuation">.</span><span class="token function">$on</span><span class="token punctuation">(</span><span class="token string">&quot;message&quot;</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token parameter">msg</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>num<span class="token operator">=</span>msg<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">//子组件2</span>
+    <span class="token keyword">var</span> vm<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token literal-property property">el</span><span class="token operator">:</span><span class="token string">&quot;#app&quot;</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">data</span><span class="token operator">:</span><span class="token punctuation">{</span>
+            <span class="token literal-property property">num</span><span class="token operator">:</span><span class="token number">10</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">components</span><span class="token operator">:</span><span class="token punctuation">{</span>
+            blogCount
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token function">clickHandle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            	<span class="token comment">//派发事件</span>
+                eventbus<span class="token punctuation">.</span><span class="token function">$emit</span><span class="token punctuation">(</span><span class="token string">'message'</span><span class="token punctuation">,</span><span class="token keyword">this</span><span class="token punctuation">.</span>num<span class="token punctuation">)</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h2 id="vuex"><a href="#vuex" class="header-anchor">#</a> vuex</h2> <h3 id="简介"><a href="#简介" class="header-anchor">#</a> 简介</h3> <blockquote><p><a href="https://www.cnblogs.com/mica/p/10757965.html" target="_blank" rel="noopener noreferrer">vuex<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <p>vuex是一个专门为vue.js设计的集中式状态管理架构。状态？我把它理解为在data中的属性需要共享给其他vue组件使用的部分，就叫做状态。简单的说就是data中需要共用的属性。</p> <p><img src="https://upload-images.jianshu.io/upload_images/16550832-20d0ad3c60a99111.png?imageMogr2/auto-orient/strip%7CimageView2/2/format/webp" alt="img"></p> <p>成员列表：</p> <ul><li><p>state 存放状态 									                                类似于组件中的data</p></li> <li><p>getters 加工state成员给外界                                             类似于组件中的computed</p></li> <li><p>mutations state成员操作                                                   类似于组件中的methods</p></li> <li><p>actions 类似于mutation，不同在于                                  提交mutations的</p> <ul><li><p>action提交的是mutation，而不是直接变更状态</p></li> <li><p>action可以包含任意异步操作</p></li></ul></li> <li><p>modules 模块化状态管理                                                      把以上4个属性再细分，让仓库更好管理</p></li></ul> <h3 id="使用"><a href="#使用" class="header-anchor">#</a> 使用</h3> <ol><li><p>搭建 store 实例</p> <p>a. 在创建 vuex 实例的地方引入 vue、vuex，使用 vuex：</p> <div class="language-vue extra-class"><pre class="language-vue"><code>import Vue from 'vue'//引入vue
+import Vuex from 'vuex'//引入vuex
+
+Vue.use(Vuex); //使用 vuex
+</code></pre></div><p>b. 如果你的 actions 中用到 store.dispath () , 要引入 store</p> <div class="language- extra-class"><pre class="language-text"><code>import store from './store' //引入状态管理 store
+</code></pre></div><p>c. new 一个 Vuex.Store 实例，并注册 state、mutations、actions、getters 到 Vuex.Store 实例中</p> <div class="language-vue extra-class"><pre class="language-vue"><code>import Vue from 'vue'//引入vue
+import Vuex from 'vuex'//引入vuex
+
+Vue.use(Vuex); //使用 vuex
+
+export default new Vuex.store({
+state:{},
+mutations:{},
+actions:{},
+getters:{}
+})
+</code></pre></div><p>ps. 你可以像上面那样将 “属性和值” 直接写在实例中，当代码量大时，你也可以分别写个.js 文件， 然后引入到 store/index.js 注册到 vuex 实例中。</p></li> <li><h3 id="在入口文件-main-js-中引入-store-并注册到-vue-实例中"><a href="#在入口文件-main-js-中引入-store-并注册到-vue-实例中" class="header-anchor">#</a> 在入口文件 main.js 中引入 store 并注册到 vue 实例中</h3> <p>​							 <img src="https://oscimg.oschina.net/oscnet/38946f8ca47252ae380a6ad4967a5bfd6f9.jpg" alt="img"></p></li> <li><h3 id="在组件中使用"><a href="#在组件中使用" class="header-anchor">#</a> 在组件中使用</h3> <p>a. 引入 vuex 中各属性对应的辅助函数：</p> <div class="language- extra-class"><pre class="language-text"><code>import {mapActions, mapState,mapGetters} from 'vuex' //注册 action 、 state 、getter
+</code></pre></div><p>b. 使用 store 中的状态数据、方法:</p> <p>​		 <img src="https://oscimg.oschina.net/oscnet/a67b6f6f063059f9233ec453c32b9381164.jpg" alt="img"></p></li></ol> <h3 id="moudles"><a href="#moudles" class="header-anchor">#</a> moudles</h3> <p>​	当项目庞大，状态非常多时，可以采用模块化管理模式。Vuex 允许我们将 store 分割成<strong>模块（module）</strong>。每个模块拥有自己的 <code>state、mutation、action、getter</code>、甚至是嵌套子模块——从上至下进行同样方式的分割。</p> <ul><li>模块中<code>mutations</code>和<code>getters</code>中的方法接受的第一个参数是自身局部模块内部的<code>state</code></li> <li><code>getters</code>中方法的第三个参数是根节点状态</li> <li><code>actions</code>中方法获取局部模块状态是<code>context.state</code>,根节点状态是<code>context.rootState</code></li></ul> <h2 id="vuex-页面刷新数据丢失怎么解决"><a href="#vuex-页面刷新数据丢失怎么解决" class="header-anchor">#</a> Vuex 页面刷新数据丢失怎么解决？</h2> <div class="language- extra-class"><pre class="language-text"><code>需要做 vuex 数据持久化，一般使用本地储存的方案来保存数据，可以自己设计存储方案，也可以使用第三方插件。
+推荐使用 vuex-persist (脯肉赛斯特)插件，它是为 Vuex 持久化储存而生的一个插件。不需要你手动存取 storage，而是直接将状态保存至 cookie 或者 localStorage中。
+</code></pre></div></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-cb1513f6><li class="level-2" data-v-cb1513f6><a href="/myblog/vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1.html#父组件传值到子组件" class="sidebar-link reco-side-父组件传值到子组件" data-v-cb1513f6>父组件传值到子组件</a></li><li class="level-2" data-v-cb1513f6><a href="/myblog/vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1.html#祖先组件传值到后代组件" class="sidebar-link reco-side-祖先组件传值到后代组件" data-v-cb1513f6>祖先组件传值到后代组件</a></li><li class="level-2" data-v-cb1513f6><a href="/myblog/vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1.html#子组件传值到父组件" class="sidebar-link reco-side-子组件传值到父组件" data-v-cb1513f6>子组件传值到父组件</a></li><li class="level-2" data-v-cb1513f6><a href="/myblog/vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1.html#兄弟组件之间的传值" class="sidebar-link reco-side-兄弟组件之间的传值" data-v-cb1513f6>兄弟组件之间的传值</a></li><li class="level-2" data-v-cb1513f6><a href="/myblog/vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1.html#event-bus-事件总线" class="sidebar-link reco-side-event-bus-事件总线" data-v-cb1513f6>event bus 事件总线</a></li><li class="level-2" data-v-cb1513f6><a href="/myblog/vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1.html#vuex" class="sidebar-link reco-side-vuex" data-v-cb1513f6>vuex</a></li><li class="level-3" data-v-cb1513f6><a href="/myblog/vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1.html#简介" class="sidebar-link reco-side-简介" data-v-cb1513f6>简介</a></li><li class="level-3" data-v-cb1513f6><a href="/myblog/vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1.html#使用" class="sidebar-link reco-side-使用" data-v-cb1513f6>使用</a></li><li class="level-3" data-v-cb1513f6><a href="/myblog/vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1.html#在入口文件-main-js-中引入-store-并注册到-vue-实例中" class="sidebar-link reco-side-在入口文件-main-js-中引入-store-并注册到-vue-实例中" data-v-cb1513f6>在入口文件 main.js 中引入 store 并注册到 vue 实例中</a></li><li class="level-3" data-v-cb1513f6><a href="/myblog/vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1.html#在组件中使用" class="sidebar-link reco-side-在组件中使用" data-v-cb1513f6>在组件中使用</a></li><li class="level-3" data-v-cb1513f6><a href="/myblog/vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1.html#moudles" class="sidebar-link reco-side-moudles" data-v-cb1513f6>moudles</a></li><li class="level-2" data-v-cb1513f6><a href="/myblog/vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1.html#vuex-页面刷新数据丢失怎么解决" class="sidebar-link reco-side-vuex-页面刷新数据丢失怎么解决" data-v-cb1513f6>Vuex 页面刷新数据丢失怎么解决？</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="Sakura" data-v-248d85d6><canvas id="canvas_sakura" style="z-index:-1;" data-v-248d85d6></canvas></div><!----><div class="RibbonAnimation"></div><div class="kanbanniang" data-v-5775ee02><div class="banniang-container" style="display:;" data-v-5775ee02><div class="messageBox" style="right:68px;bottom:190px;display:none;" data-v-5775ee02>
+      欢迎来到 临风
+    </div> <div class="operation" style="right:90px;bottom:40px;display:none;" data-v-5775ee02><i class="kbnfont kbn-ban-home ban-home" data-v-5775ee02></i> <i class="kbnfont kbn-ban-message message" data-v-5775ee02></i> <i class="kbnfont kbn-ban-close close" data-v-5775ee02></i> <a target="_blank" href="https://vuepress-theme-reco.recoluan.com/views/plugins/kanbanniang.html" data-v-5775ee02><i class="kbnfont kbn-ban-info info" data-v-5775ee02></i></a> <i class="kbnfont kbn-ban-theme skin" style="display:none;" data-v-5775ee02></i></div> <canvas id="banniang" width="150" height="220" class="live2d" style="right:90px;bottom:-20px;opacity:0.9;" data-v-5775ee02></canvas></div> <div class="showBanNiang" style="display:none;" data-v-5775ee02>
+    看板娘
+  </div></div><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><div class="reco-bgm-panel" data-v-b1d3339e><audio id="bgm" src="https://assets.smallsunnyfox.com/music/2.mp3" data-v-b1d3339e></audio> <div class="reco-float-box" style="bottom:200px;z-index:999999;display:none;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><img src="https://assets.smallsunnyfox.com/music/2.jpg" data-v-b1d3339e></div> <div class="reco-bgm-box" style="left:10px;bottom:10px;z-index:999999;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="reco-bgm-cover" style="background-image:url(https://assets.smallsunnyfox.com/music/2.jpg);" data-v-b1d3339e><div class="mini-operation" style="display:none;" data-v-b1d3339e><i class="reco-bgm reco-bgm-pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play" style="display:none;" data-v-b1d3339e></i></div> <div class="falut-message" style="display:none;" data-v-b1d3339e>
+          播放失败
+        </div></div> <div class="reco-bgm-info" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-music music" data-v-b1d3339e></i>강남역 4번 출구</div> <div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-artist" data-v-b1d3339e></i>Plastic / Fallin` Dild</div> <div class="reco-bgm-progress" data-v-b1d3339e><div class="progress-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div> <div class="reco-bgm-operation" data-v-b1d3339e><i class="reco-bgm reco-bgm-last last" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-pause pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play play" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-next next" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-volume1 volume" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-mute mute" style="display:none;" data-v-b1d3339e></i> <div class="volume-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div></div> <div class="reco-bgm-left-box" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><i class="reco-bgm reco-bgm-left" data-v-b1d3339e></i></div></div></div></div></div>
+    <script src="/myblog/assets/js/app.3eeaeb68.js" defer></script><script src="/myblog/assets/js/3.e371c4cc.js" defer></script><script src="/myblog/assets/js/1.f91b95b6.js" defer></script><script src="/myblog/assets/js/35.6ff9f76d.js" defer></script>
+  </body>
+</html>
